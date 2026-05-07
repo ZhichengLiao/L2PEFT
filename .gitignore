@@ -1,3 +1,17 @@
 .DS_Store
 **/.DS_Store
 **/.claude
+
+# 数据文件
+data/**/*.parquet
+
+# Hydra 输出和日志
+outputs/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
