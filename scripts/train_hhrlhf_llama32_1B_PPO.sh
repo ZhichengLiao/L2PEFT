@@ -9,9 +9,9 @@ export HF_HOME=/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache
 N_GPUS=${N_GPUS:-4}
 ACTOR_MODEL=${ACTOR_MODEL:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/hub/models--meta-llama--Llama-3.2-1B/snapshots/4e20de362430cd3b72f300e6b0f18e50e7166e08}
 RM_MODEL=${RM_MODEL:-/root/autodl-tmp/hf_cache/hub/models--Skywork--Skywork-Reward-Llama-3.1-8B-v0.2/snapshots/d4117fbfd81b72f41b96341238baa1e3e90a4ce1}
-TRAIN_FILE=${TRAIN_FILE:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/data/hh_rlhf}
-VAL_FILE=${VAL_FILE:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/data/hh_rlhf}       # HH-RLHF 无官方 val set，重用 train；test_freq=-1 时不会真用
-CKPT_DIR=${CKPT_DIR:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/checkpoints/ppo_llama32_1B_hhrlhf_skywork8B_FFT}
+TRAIN_FILE=${TRAIN_FILE:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/data/hh_rlhf/train.parquet}
+VAL_FILE=${VAL_FILE:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/data/hh_rlhf/train.parquet}       # HH-RLHF 无官方 val set，重用 train；test_freq=-1 时不会真用
+CKPT_DIR=${CKPT_DIR:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT_checkpoints/ppo_llama32_1B_hhrlhf_skywork8B_FFT}
 
 mkdir -p ${CKPT_DIR}
 

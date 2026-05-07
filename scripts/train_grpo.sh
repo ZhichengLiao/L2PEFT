@@ -5,12 +5,19 @@ export WANDB_API_KEY='wandb_v1_8ML4dHzfT5u9MlGr9CNwgI6KbaA_tvHiZvPUNu8lxbt0dBIpP
 export OMP_NUM_THREADS=1
 export REWARD_PRINT_FREQ=0
 export RAY_INCLUDE_DASHBOARD=0
+unset ROCR_VISIBLE_DEVICES
+unset HIP_VISIBLE_DEVICES
 
-N_GPUS=${N_GPUS:-2}
-MODEL_PATH=${MODEL_PATH:-Qwen/Qwen3-0.6B}
-TRAIN_FILE=${TRAIN_FILE:-$HOME/data/Numina/train.parquet}
-VAL_FILE=${VAL_FILE:-$HOME/data/Numina/test.parquet}
-CKPT_DIR=${CKPT_DIR:-$HOME/checkpoints/grpo_qwen3_0.6B_numina_FFT}
+SEED=${SEED:-42}
+DATA_SEED=${DATA_SEED:-$SEED}
+ROLLOUT_SEED=${ROLLOUT_SEED:-$SEED}
+export PYTHONHASHSEED=${SEED}
+
+N_GPUS=${N_GPUS:-4}
+MODEL_PATH=${MODEL_PATH:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/hub/models--Qwen--Qwen3-0.6B/snapshots/c1899de289a04d12100db370d81485cdf75e47ca}
+TRAIN_FILE=${TRAIN_FILE:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/data/Numina/train.parquet}
+VAL_FILE=${VAL_FILE:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/data/Numina/test.parquet}
+CKPT_DIR=${CKPT_DIR:-/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT_checkpoints/grpo_qwen3_0.6B_numina_FFT_d${DATA_SEED}_r${ROLLOUT_SEED}}
 REWARD_FN_PATH=${REWARD_FN_PATH:-$(cd "$(dirname "$0")" && pwd)/../rewards/math_reward.py}
 
 mkdir -p ${CKPT_DIR}
@@ -21,6 +28,7 @@ python3 -m verl.trainer.main_ppo \
     data.train_files=${TRAIN_FILE} \
     data.val_files=${VAL_FILE} \
     data.train_batch_size=256 \
+    data.seed=${DATA_SEED} \
     data.max_prompt_length=1024 \
     data.max_response_length=1024 \
     data.filter_overlong_prompts=True \
@@ -40,22 +48,23 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.actor.fsdp_config.param_offload=False \
     actor_rollout_ref.actor.fsdp_config.optimizer_offload=False \
     actor_rollout_ref.rollout.name=vllm \
-    actor_rollout_ref.rollout.gpu_memory_utilization=0.8 \
+    actor_rollout_ref.rollout.gpu_memory_utilization=0.9 \
+    actor_rollout_ref.rollout.seed=${ROLLOUT_SEED} \
     actor_rollout_ref.rollout.n=16 \
     actor_rollout_ref.rollout.tensor_model_parallel_size=1 \
     actor_rollout_ref.rollout.load_format=safetensors \
     actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu=32 \
     actor_rollout_ref.rollout.enforce_eager=False \
-    actor_rollout_ref.rollout.free_cache_engine=False \
+    actor_rollout_ref.rollout.free_cache_engine=True \
     actor_rollout_ref.ref.strategy=fsdp2 \
     actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu=32 \
     actor_rollout_ref.ref.fsdp_config.param_offload=False \
     custom_reward_function.path=${REWARD_FN_PATH} \
     custom_reward_function.name=compute_score \
     trainer.critic_warmup=0 \
-    trainer.logger='["console"]' \
-    trainer.project_name=grpo_numina_math \
-    trainer.experiment_name=qwen2.5_1.5b_numina \
+    trainer.logger='["console", "wandb"]' \
+    trainer.project_name=PEFT \
+    trainer.experiment_name=qwen3_0.6b_grpo_numina_d${DATA_SEED}_r${ROLLOUT_SEED} \
     trainer.n_gpus_per_node=$N_GPUS \
     trainer.nnodes=1 \
     trainer.save_freq=200 \
