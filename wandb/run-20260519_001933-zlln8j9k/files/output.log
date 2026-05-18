@@ -78,3 +78,4 @@ WARNING:2026-05-19 00:20:51,712:WARNING: Error in configuration: macro '\frac' f
  '0.14285714285714285}')
 step:0 - val-core/nvidia/Nemotron-Cascade-RL-Math/reward/mean@1:0.09642857142857143 - val-aux/nvidia/Nemotron-Cascade-RL-Math/score/mean@1:0.09642857142857143 - val-aux/nvidia/Nemotron-Cascade-RL-Math/format_correct/mean@1:0.14285714285714285
 Training Progress:   0%|          | 0/214 [00:00<?, ?it/s]
+step:1 - actor/entropy:0.08307905495166779
