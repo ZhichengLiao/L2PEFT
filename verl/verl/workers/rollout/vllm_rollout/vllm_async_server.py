@@ -211,6 +211,7 @@ class vLLMHttpServerBase:
             temperature=self.config.temperature,
             top_k=self.config.top_k,
             top_p=self.config.top_p,
+            min_p=self.config.min_p,
             repetition_penalty=1.0,
             max_new_tokens=self.config.response_length,
         )

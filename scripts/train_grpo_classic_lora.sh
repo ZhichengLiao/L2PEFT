@@ -19,10 +19,12 @@ N_GPUS=${N_GPUS:-2}
 LORA_RANK=${LORA_RANK:-16}
 LORA_ALPHA=${LORA_ALPHA:-$(( LORA_RANK * 2 ))}
 MODEL_PATH=${MODEL_PATH:-Qwen/Qwen3-0.6B}
-TRAIN_FILE=${TRAIN_FILE:-$HOME/data/Numina/train.parquet}
-VAL_FILE=${VAL_FILE:-$HOME/data/Numina/test.parquet}
-CKPT_DIR=${CKPT_DIR:-$HOME/checkpoints/grpo_classic_lora_r${LORA_RANK}}
-REWARD_FN_PATH=${REWARD_FN_PATH:-$(cd "$(dirname "$0")" && pwd)/../rewards/math_reward.py}
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+PROJECT_ROOT=$(cd "${SCRIPT_DIR}/.." && pwd)
+TRAIN_FILE=${TRAIN_FILE:-${PROJECT_ROOT}/data/NemotronCascadeMath/train.parquet}
+VAL_FILE=${VAL_FILE:-${PROJECT_ROOT}/data/NemotronCascadeMath/test.parquet}
+CKPT_DIR=${CKPT_DIR:-$HOME/checkpoints/grpo_nemotron_cascade_math_classic_lora_r${LORA_RANK}}
+REWARD_FN_PATH=${REWARD_FN_PATH:-${PROJECT_ROOT}/rewards/nemotron_math_reward.py}
 
 mkdir -p "${CKPT_DIR}"
 
@@ -36,6 +38,7 @@ python3 -m verl.trainer.main_ppo \
     data.max_response_length=1024 \
     data.filter_overlong_prompts=True \
     data.truncation='error' \
+    +data.apply_chat_template_kwargs.enable_thinking=False \
     actor_rollout_ref.model.path=${MODEL_PATH} \
     actor_rollout_ref.model.use_remove_padding=True \
     actor_rollout_ref.model.enable_gradient_checkpointing=True \
@@ -54,7 +57,18 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.actor.fsdp_config.optimizer_offload=False \
     actor_rollout_ref.rollout.name=vllm \
     actor_rollout_ref.rollout.gpu_memory_utilization=0.8 \
+    actor_rollout_ref.rollout.max_num_batched_tokens=16384 \
     actor_rollout_ref.rollout.n=16 \
+    actor_rollout_ref.rollout.temperature=0.6 \
+    actor_rollout_ref.rollout.top_p=0.95 \
+    actor_rollout_ref.rollout.top_k=20 \
+    actor_rollout_ref.rollout.min_p=0 \
+    actor_rollout_ref.rollout.do_sample=True \
+    actor_rollout_ref.rollout.val_kwargs.do_sample=True \
+    actor_rollout_ref.rollout.val_kwargs.temperature=0.6 \
+    actor_rollout_ref.rollout.val_kwargs.top_p=0.95 \
+    actor_rollout_ref.rollout.val_kwargs.top_k=20 \
+    actor_rollout_ref.rollout.val_kwargs.min_p=0 \
     actor_rollout_ref.rollout.tensor_model_parallel_size=1 \
     actor_rollout_ref.rollout.load_format=safetensors \
     actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu=32 \
@@ -68,7 +82,7 @@ python3 -m verl.trainer.main_ppo \
     trainer.critic_warmup=0 \
     trainer.logger='["console"]' \
     trainer.project_name=grpo_classic_lora \
-    trainer.experiment_name=qwen3_0.6b_classic_lora_r${LORA_RANK} \
+    trainer.experiment_name=qwen3_0.6b_nemotron_cascade_math_classic_lora_r${LORA_RANK} \
     trainer.n_gpus_per_node=$N_GPUS \
     trainer.nnodes=1 \
     trainer.save_freq=200 \

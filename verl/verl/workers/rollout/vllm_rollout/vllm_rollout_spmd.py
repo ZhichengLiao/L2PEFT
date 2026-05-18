@@ -365,6 +365,7 @@ class vLLMRollout(BaseRollout):
             kwargs = {
                 "top_k": self.config.val_kwargs.top_k,
                 "top_p": self.config.val_kwargs.top_p,
+                "min_p": self.config.val_kwargs.min_p,
                 "temperature": self.config.val_kwargs.temperature,
                 "n": 1,  # if validate, already repeat in ray_trainer
             }

@@ -1,0 +1,118 @@
+{
+  "os":  "Linux-6.12.80-ql-generic-14-8-x86_64-with-glibc2.39",
+  "python":  "CPython 3.10.20",
+  "startedAt":  "2026-05-17T18:04:50.190169Z",
+  "args":  [
+    "--node-ip-address=192.168.62.149",
+    "--node-manager-port=38667",
+    "--object-store-name=/tmp/slurm-zhengqing.gao-75336/ray/session_2026-05-17_22-02-40_272892_1115510/sockets/plasma_store",
+    "--raylet-name=/tmp/slurm-zhengqing.gao-75336/ray/session_2026-05-17_22-02-40_272892_1115510/sockets/raylet",
+    "--redis-address=None",
+    "--metrics-agent-port=0",
+    "--logging-rotate-bytes=536870912",
+    "--logging-rotate-backup-count=5",
+    "--runtime-env-agent-port=0",
+    "--gcs-address=192.168.62.149:39437",
+    "--session-name=session_2026-05-17_22-02-40_272892_1115510",
+    "--temp-dir=/tmp/slurm-zhengqing.gao-75336/ray",
+    "--webui=127.0.0.1:8265",
+    "--cluster-id=0f550bee409e0c2b29e397879959c468979a793a7785e8c7cdce3667",
+    "--worker-id=b83d22d5184adfaeba1b0be6fc083ba404636b73c600a5af327b325a",
+    "--worker-launch-time-ms=1779040974286",
+    "--node-id=caac325b411542997a721a2eec1a0e8dc88df94f865d788ea8a8312b",
+    "--runtime-env-hash=-1580796864"
+  ],
+  "program":  "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/conda_envs/lzc-L2PEFT/lib/python3.10/site-packages/ray/_private/workers/default_worker.py",
+  "git":  {
+    "remote":  "git@github-zhicheng:ZhichengLiao/L2PEFT.git",
+    "commit":  "4f95bc082be23640ca49a811dbedca7370d107dc"
+  },
+  "email":  "zl334000@gmail.com",
+  "root":  "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT",
+  "host":  "gpu-49",
+  "executable":  "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/conda_envs/lzc-L2PEFT/bin/python3",
+  "cpu_count":  128,
+  "cpu_count_logical":  256,
+  "gpu":  "NVIDIA A100-SXM4-40GB",
+  "gpu_count":  4,
+  "disk":  {
+    "/":  {
+      "total":  "1073741824",
+      "used":  "11870208"
+    }
+  },
+  "memory":  {
+    "total":  "270238838784"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA A100-SXM4-40GB",
+      "memoryTotal":  "42949672960",
+      "cudaCores":  6912,
+      "architecture":  "Ampere",
+      "uuid":  "GPU-ca220af4-c132-da5b-1090-7a2cf5c782e2"
+    },
+    {
+      "name":  "NVIDIA A100-SXM4-40GB",
+      "memoryTotal":  "42949672960",
+      "cudaCores":  6912,
+      "architecture":  "Ampere",
+      "uuid":  "GPU-eafb2930-2f5a-0bd4-5ece-4f177b075c4b"
+    },
+    {
+      "name":  "NVIDIA A100-SXM4-40GB",
+      "memoryTotal":  "42949672960",
+      "cudaCores":  6912,
+      "architecture":  "Ampere",
+      "uuid":  "GPU-2fafbdd7-fbeb-986f-18d2-d09c0943c1da"
+    },
+    {
+      "name":  "NVIDIA A100-SXM4-40GB",
+      "memoryTotal":  "42949672960",
+      "cudaCores":  6912,
+      "architecture":  "Ampere",
+      "uuid":  "GPU-c2774ee7-aa75-2c52-b370-cbea18fbc21c"
+    }
+  ],
+  "cudaVersion":  "12.8",
+  "slurm":  {
+    "cluster_name":  "mbz-ciai",
+    "conf":  "/etc/qlustar/common/slurm-llnl/slurm.conf",
+    "cpus_on_node":  "256",
+    "cpus_per_task":  "256",
+    "gpus_on_node":  "4",
+    "gtids":  "0",
+    "job_account":  "cscc-users",
+    "job_cpus_per_node":  "256",
+    "job_end_time":  "1779213742",
+    "job_gid":  "2002",
+    "job_gpus":  "0,1,2,3",
+    "job_id":  "75336",
+    "job_name":  "lzc-qwen3-1.7B-math",
+    "job_nodelist":  "gpu-49",
+    "job_num_nodes":  "1",
+    "job_partition":  "cscc-gpu-p",
+    "job_qos":  "cscc-gpu-qos",
+    "job_start_time":  "1779040942",
+    "job_uid":  "2062",
+    "job_user":  "zhengqing.gao",
+    "jobid":  "75336",
+    "localid":  "0",
+    "mem_per_node":  "245760",
+    "nnodes":  "1",
+    "nodeid":  "0",
+    "nodelist":  "gpu-49",
+    "oom_kill_step":  "0",
+    "prio_process":  "0",
+    "procid":  "0",
+    "script_context":  "prolog_task",
+    "submit_dir":  "/nfs-stor/zhengqing.gao/yuhao.wu/lzc",
+    "submit_host":  "ciai-login-1",
+    "task_pid":  "1115483",
+    "tasks_per_node":  "1",
+    "topology_addr":  "gpu-49",
+    "topology_addr_pattern":  "node",
+    "tres_per_task":  "cpu=256"
+  },
+  "writerId":  "j4r8b736iu0w41ndhx0bcyruaz3ken72"
+}

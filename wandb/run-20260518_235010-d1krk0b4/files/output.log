@@ -1,0 +1,65 @@
+Checkpoint tracker file does not exist: /nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/checkpoints/grpo_gemma3_1B_it_nemotron_cascade_math_FFT_d42_r42/latest_checkpointed_iteration.txt
+Training from scratch
+test_gen_batch meta info: {'eos_token_id': 1, 'pad_token_id': 0, 'recompute_log_prob': False, 'do_sample': True, 'validate': True, 'global_steps': 0}
+validation generation end
+[prompt] user
+## Task Condition
+
+Calculate the areas of figures bounded by lines given in polar coordinates.
+
+$$
+r=2 \sin 4 \phi
+$$ Let's think step by step and output the final answer within \boxed{}.
+model
+
+[response] Let the given equation be
+$$r = 2 \sin 4 \phi$$
+We want to find the area of the region bounded by the lines $y = 0$ and $y = x$.
+
+We can express the area as
+$$A = \int_{0}^{2\pi} \int_{0}^{2\pi} \frac{r}{2} r \, d\phi \, d\theta = \int_{0}^{2\pi} \int_{0}^{2\pi} \frac{r^2}{2} \, d\phi \, d\theta$$
+$$A = \int_{0}^{2\pi} \frac{1}{2} \int_{0}^{2\pi} r^2 \, d\phi \, d\theta = \frac{1}{2} \int_{0}^{2\pi} r^2 \left[ \phi \right]_{0}^{2\pi} \, d\theta = \frac{1}{2} \int_{0}^{2\pi} r^2 (2\pi) \, d\theta$$
+$$A = \frac{1}{2} \cdot 2\pi \int_{0}^{2\pi} r^2 \, d\theta = \pi \int_{0}^{2\pi} r^2 \, d\theta$$
+$$A = \pi \int_{0}^{2\pi} (2 \sin 4 \phi)^2 \, d\phi = \pi \int_{0}^{2\pi} 4 \sin^2 4 \phi \, d\phi$$
+We know that $\sin^2 x = \frac{1 - \cos 2x}{2}$, so
+$$A = \pi \int_{0}^{2\pi} 4 \left( \frac{1 - \cos 8 \phi}{2} \right) \, d\phi = \pi \int_{0}^{2\pi} (2 - \cos 8 \phi) \, d\phi$$
+$$A = \pi \left[ 2\phi - \frac{\sin 8\phi}{8} \right]_{0}^{2\pi} = \pi \left[ \left( 2(2\pi) - \frac{\sin 16\pi}{8} \right) - \left( 2(0) - \frac{\sin 0}{8} \right) \right]$$
+$$A = \pi \left[ 4\pi - 0 - 0 + 0 \right] = 4\pi^2$$
+
+Alternatively, we can consider the area of a sector of the circle with radius $r$ and angle $\theta$. The area of a sector is given by $A = \frac{1}{2}r^2 \theta$.
+Since $r = 2 \sin 4 \phi$, we have $\theta = 4 \phi$.
+The area of the sector is
+$$A = \frac{1}{2} (2 \sin 4 \phi)^2 (4 \phi) = 4 \sin^2 4 \phi \phi = 4 \sin^2 4 \phi \phi = 4 \sin^2 4 \phi$$
+The area of the triangle formed by the origin and the intersection points is $\frac{1}{2} r^2 \sin \theta = \frac{1}{2} (2 \sin 4 \phi)^2 \sin 4 \phi = 2 \sin^2 4 \phi \sin 4 \phi$.
+The area of the region bounded by the lines is the area of the sector minus the area of the triangle.
+$$A = 4 \sin^2 4 \phi - \frac{1}{2} (2 \sin 4 \phi)^2 \sin 4 \phi = 4 \sin^2 4 \phi - \frac{1}{2} (4 \sin^2 4 \phi) \sin 4 \phi = 4 \sin^2 4 \phi - 2 \sin^2 4 \phi \sin 4 \phi$$
+However, this approach is not straightforward.
+
+Consider the region bounded by $y=0$ and $y=x$. This is a triangle with vertices $(0,0)$, $(2\pi, 0)$, and $(2\pi, 2\pi)$. The area of this triangle is $\frac{1}{2} (2\pi)(2\pi) = 2\pi^2$.
+
+The area of the region bounded by the lines $y=0$ and $y=x$ is the area of the sector of the circle with radius $r=2 \sin 4 \phi$ and angle $\theta = 4 \phi$.
+The area of the sector is $\frac{1}{2} r^2 \theta = \frac{1}{2} (2 \sin 4 \phi)^2 (4 \phi) = 4 \sin^2 4 \phi \phi = 4 \sin^2 4 \phi$.
+The area of the triangle formed by the origin and the intersection points is $\frac{1}{2} r^2 \sin \theta = \frac{1}{2} (2 \sin 4 \phi)^2 \sin 4 \phi = 2 \sin^2 4 \phi \sin 4 \phi$.
+So the area is $4 \sin^2 4 \phi - 2 \sin^2 4 \phi \sin 4 \phi = 4 \sin^2 4 \phi - 2 \sin^2 4 \phi \sin 4 \phi$.
+
+We can consider the area of the region bounded by the lines $y=0$ and $y=x$.
+The area is $A = \int_{0}^{2\pi} \int_{0}^{2\pi} \frac{r}{2} r \, d\phi \, d\theta = \int_{0}^{2\pi} \int_{0}^{2\pi} \frac{r^2}{2} \, d\phi \, d\theta = \frac{1}{2} \int_{0}^{2\pi} r^2 \left[ \phi \right]_{0}^{2\pi} \, d\theta = \frac{1}{2} \int_{0}^{2\pi} r^2 (2\pi) \, d\theta = \pi \int_{0}^{2\pi} r^2 \, d\theta = \pi \int_{0}^{2\pi} (2 \sin 4 \phi)^2 \, d\phi = \pi \int_{0}^{2\pi} 4 \sin^2 4 \phi \, d\phi = 4\pi \int_{0}^{2\pi} \sin^2 4 \phi \, d\phi$
+We know that $\sin^2 x = \frac{1-\cos 2x}{2}$, so $\sin^2 4 \phi = \frac{1 - \cos 8 \phi}{2}$.
+Then $4\pi \int_{0}^{2\pi} \frac{1 - \cos 8 \phi}{2} \, d\phi = 2\pi \int_{0}^{2\pi} (1 - \cos 8 \phi) \, d\phi = 2\pi \left[ \phi - \frac{\sin 8 \phi}{8} \right]_{0}^{2\pi} = 2\pi \left[ (2\pi - \frac{\sin 16\pi}{8}) - (0 - \frac{\sin 0}{8}) \right] = 2\pi \left[ 2\pi - 0 - 0 + 0 \right] = 4\pi^2$.
+
+Final Answer: The final answer is $\boxed{4\pi^2}$
+[ground_truth] 2\pi
+[score] 0.0
+[format_correct] False
+[extracted_answer] 4\pi^2
+('Initial validation metrics: '
+ "{'val-core/nvidia/Nemotron-Cascade-RL-Math/reward/mean@1': "
+ "0.07142857142857142, 'val-aux/nvidia/Nemotron-Cascade-RL-Math/score/mean@1': "
+ '0.07142857142857142, '
+ "'val-aux/nvidia/Nemotron-Cascade-RL-Math/format_correct/mean@1': "
+ '0.06785714285714285}')
+step:0 - val-core/nvidia/Nemotron-Cascade-RL-Math/reward/mean@1:0.07142857142857142 - val-aux/nvidia/Nemotron-Cascade-RL-Math/score/mean@1:0.07142857142857142 - val-aux/nvidia/Nemotron-Cascade-RL-Math/format_correct/mean@1:0.06785714285714285
+Training Progress:   1%|▏         | 3/214 [21:00<24:49:28, 423.55s/it]
+step:1 - actor/entropy:0.09394864737987518 - actor/pg_clipfrac:0.0008429466777784 - actor/ppo_kl:9.025351787721181e-05 - actor/pg_clipfrac_lower:7.920540610939497e-06 - actor/kl_loss:1.6534432218218154e-05 - actor/kl_coef:0.0010000000000000005 - actor/pg_loss:2.1204327822488267e-06 - actor/grad_norm:0.3066745884716511 - perf/mfu/actor:0.10598781397978088 - perf/max_memory_allocated_gb:22.990615367889404 - perf/max_memory_reserved_gb:26.03125 - perf/cpu_memory_used_gb:61.52806282043457 - actor/lr:1e-06 - training/global_step:1 - training/epoch:0 - critic/score/mean:0.0732421875 - critic/score/max:1.0 - critic/score/min:0.0 - critic/rewards/mean:0.0732421875 - critic/rewards/max:1.0 - critic/rewards/min:0.0 - critic/advantages/mean:-0.012118080630898476 - critic/advantages/max:2.4748666286468506 - critic/advantages/min:-2.4748666286468506 - critic/returns/mean:-0.012118080630898476 - critic/returns/max:2.4748666286468506 - critic/returns/min:-2.4748666286468506 - response_length/mean:1431.6328125 - response_length/max:8192.0 - response_length/min:130.0 - response_length/clip_ratio:0.0146484375 - response_length_non_aborted/mean:1431.6328125 - response_length_non_aborted/max:8192.0 - response_length_non_aborted/min:130.0 - response_length_non_aborted/clip_ratio:0.0146484375 - response/aborted_ratio:0.0 - prompt_length/mean:115.515625 - prompt_length/max:288.0 - prompt_length/min:45.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:0.0002344180829823017 - timing_s/generate_sequences:162.23492431640625 - timing_s/generation_timing/max:166.85044860839844 - timing_s/generation_timing/min:160.3052215576172 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:171.17331546219066 - timing_s/reward:91.10281820315868 - timing_s/old_log_prob:15.538543870206922 - timing_s/ref:19.015648322645575 - timing_s/adv:0.09114704094827175 - timing_s/update_actor:99.7160725868307 - timing_s/step:397.0090908440761 - timing_s/stop_profile:7.270602509379387e-05 - timing_per_token_ms/gen:0.11676278960744033 - timing_per_token_ms/ref:0.012002706795923431 - timing_per_token_ms/adv:5.75321540057766e-05 - timing_per_token_ms/update_actor:0.06294094010328395 - perf/total_num_tokens:1584280 - perf/time_per_step:397.0090908440761 - perf/throughput:997.6345860441645
+step:2 - actor/entropy:0.08951453864574432 - actor/pg_clipfrac:0.0009776577336424452 - actor/ppo_kl:-6.056534521592383e-05 - actor/pg_clipfrac_lower:3.6145425212907867e-06 - actor/kl_loss:1.9343932200488467e-05 - actor/kl_coef:0.0010000000000000005 - actor/pg_loss:1.760794020810863e-06 - actor/grad_norm:0.29471275955438614 - perf/mfu/actor:0.1061031534589063 - perf/max_memory_allocated_gb:23.00089168548584 - perf/max_memory_reserved_gb:26.171875 - perf/cpu_memory_used_gb:70.61912727355957 - actor/lr:1e-06 - training/global_step:2 - training/epoch:0 - critic/score/mean:0.0888671875 - critic/score/max:1.0 - critic/score/min:0.0 - critic/rewards/mean:0.0888671875 - critic/rewards/max:1.0 - critic/rewards/min:0.0 - critic/advantages/mean:-0.015697121620178223 - critic/advantages/max:2.4748666286468506 - critic/advantages/min:-1.6201815605163574 - critic/returns/mean:-0.015697121620178223 - critic/returns/max:2.4748666286468506 - critic/returns/min:-1.6201815605163574 - response_length/mean:1498.12109375 - response_length/max:8192.0 - response_length/min:141.0 - response_length/clip_ratio:0.015625 - response_length_non_aborted/mean:1498.12109375 - response_length_non_aborted/max:8192.0 - response_length_non_aborted/min:141.0 - response_length_non_aborted/clip_ratio:0.015625 - response/aborted_ratio:0.0 - prompt_length/mean:127.125 - prompt_length/max:363.0 - prompt_length/min:56.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:5.216803401708603e-05 - timing_s/generate_sequences:168.99737548828125 - timing_s/generation_timing/max:190.0104522705078 - timing_s/generation_timing/min:157.94879150390625 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:193.9654271551408 - timing_s/reward:100.87609897507355 - timing_s/old_log_prob:15.369824787601829 - timing_s/ref:19.342037856113166 - timing_s/adv:0.07855344610288739 - timing_s/update_actor:104.01985920220613 - timing_s/step:434.0595021182671 - timing_s/stop_profile:5.877995863556862e-05 - timing_per_token_ms/gen:0.1264379516758888 - timing_per_token_ms/ref:0.011622060755290164 - timing_per_token_ms/adv:4.7200451676120796e-05 - timing_per_token_ms/update_actor:0.06250246909855367 - perf/total_num_tokens:1664252 - perf/time_per_step:434.0595021182671 - perf/throughput:958.5390896168801
+step:3 - actor/entropy:0.08905595541000366 - actor/pg_clipfrac:0.000985197495964485 - actor/ppo_kl:-3.321539266387674e-05 - actor/pg_clipfrac_lower:5.751565623768329e-06 - actor/kl_loss:2.4626296326824004e-05 - actor/kl_coef:0.0010000000000000005 - actor/pg_loss:1.6989383766485844e-06 - actor/grad_norm:0.2902149297297001 - perf/mfu/actor:0.11722614782842483 - perf/max_memory_allocated_gb:23.00089168548584 - perf/max_memory_reserved_gb:26.171875 - perf/cpu_memory_used_gb:71.28046417236328 - actor/lr:1e-06 - training/global_step:3 - training/epoch:0 - critic/score/mean:0.060546875 - critic/score/max:1.0 - critic/score/min:0.0 - critic/rewards/mean:0.060546875 - critic/rewards/max:1.0 - critic/rewards/min:0.0 - critic/advantages/mean:-0.002640065737068653 - critic/advantages/max:2.4748666286468506 - critic/advantages/min:-2.4748666286468506 - critic/returns/mean:-0.002640065737068653 - critic/returns/max:2.4748666286468506 - critic/returns/min:-2.4748666286468506 - response_length/mean:1556.119140625 - response_length/max:8192.0 - response_length/min:207.0 - response_length/clip_ratio:0.0205078125 - response_length_non_aborted/mean:1556.119140625 - response_length_non_aborted/max:8192.0 - response_length_non_aborted/min:207.0 - response_length_non_aborted/clip_ratio:0.0205078125 - response/aborted_ratio:0.0 - prompt_length/mean:121.7734375 - prompt_length/max:443.0 - prompt_length/min:47.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:8.615106344223022e-05 - timing_s/generate_sequences:172.39146423339844 - timing_s/generation_timing/max:189.3034210205078 - timing_s/generation_timing/min:141.93711853027344 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:193.00052654417232 - timing_s/reward:103.65972172794864 - timing_s/old_log_prob:15.342640837654471 - timing_s/ref:19.234359910711646 - timing_s/adv:0.11745258700102568 - timing_s/update_actor:96.91310258302838 - timing_s/step:428.63425894035026 - timing_s/stop_profile:6.671389564871788e-05 - timing_per_token_ms/gen:0.1211199526969338 - timing_per_token_ms/ref:0.011194730130634739 - timing_per_token_ms/adv:6.835943700362694e-05 - timing_per_token_ms/update_actor:0.05640510183732871 - perf/total_num_tokens:1718162 - perf/time_per_step:428.63425894035026 - perf/throughput:1002.11425251423

@@ -1,0 +1,61 @@
+{
+  "dataset": "AI-MO/NuminaMath-CoT",
+  "raw_train_files": [
+    "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/hub/datasets--AI-MO--NuminaMath-CoT/snapshots/9d8d210c9f6a36c8f3cd84045668c9b7800ef517/data/train-00000-of-00005.parquet",
+    "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/hub/datasets--AI-MO--NuminaMath-CoT/snapshots/9d8d210c9f6a36c8f3cd84045668c9b7800ef517/data/train-00001-of-00005.parquet",
+    "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/hub/datasets--AI-MO--NuminaMath-CoT/snapshots/9d8d210c9f6a36c8f3cd84045668c9b7800ef517/data/train-00002-of-00005.parquet",
+    "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/hub/datasets--AI-MO--NuminaMath-CoT/snapshots/9d8d210c9f6a36c8f3cd84045668c9b7800ef517/data/train-00003-of-00005.parquet",
+    "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/hub/datasets--AI-MO--NuminaMath-CoT/snapshots/9d8d210c9f6a36c8f3cd84045668c9b7800ef517/data/train-00004-of-00005.parquet"
+  ],
+  "seed": 42,
+  "source_quotas": {
+    "gsm8k": 6900,
+    "orca_math": 5100,
+    "synthetic_math": 2000
+  },
+  "test_size": 280,
+  "filters": {
+    "max_problem_chars": 512,
+    "max_solution_chars": 1800,
+    "max_answer_chars": 32,
+    "allowed_answer_kinds": [
+      "decimal",
+      "frac",
+      "integer",
+      "other",
+      "pi",
+      "sqrt",
+      "tuple_or_list"
+    ]
+  },
+  "raw_rows": 859494,
+  "eligible_rows_by_source": {
+    "gsm8k": 6973,
+    "orca_math": 145508,
+    "synthetic_math": 140655
+  },
+  "selected_rows_by_source": {
+    "gsm8k": 6900,
+    "orca_math": 5100,
+    "synthetic_math": 2000
+  },
+  "train_rows": 13720,
+  "test_rows": 280,
+  "skipped": {
+    "source_not_selected": 530964,
+    "answer_kind_not_allowed": 16419,
+    "overlong_problem": 10094,
+    "overlong_answer": 7189,
+    "overlong_solution": 1680,
+    "missing_boxed_answer": 12
+  },
+  "answer_kinds_selected": {
+    "integer": 9605,
+    "other": 2309,
+    "sqrt": 98,
+    "tuple_or_list": 933,
+    "decimal": 584,
+    "frac": 438,
+    "pi": 33
+  }
+}

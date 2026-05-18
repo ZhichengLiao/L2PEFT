@@ -1,0 +1,26 @@
+{
+  "dataset": "nvidia/Nemotron-Cascade-RL-Math",
+  "raw_arrow_path": "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/datasets/nvidia___nemotron-cascade-rl-math/default/0.0.0/fcd07b1417edc12cf4642cae7d269e4f3a84c812/nemotron-cascade-rl-math-train.arrow",
+  "seed": 42,
+  "max_problem_chars": 1024,
+  "test_size": 280,
+  "raw_rows": 14476,
+  "kept_rows": 14026,
+  "train_rows": 13746,
+  "test_rows": 280,
+  "skipped_empty_problem": 0,
+  "skipped_empty_answer": 0,
+  "skipped_overlong_problem": 450,
+  "source_counts_raw": {
+    "acereason_math": 1257,
+    "deepscaler": 1578,
+    "numinamath_1.5": 11217,
+    "openmathreasoning": 424
+  },
+  "source_counts_kept": {
+    "acereason_math": 1083,
+    "deepscaler": 1573,
+    "numinamath_1.5": 10946,
+    "openmathreasoning": 424
+  }
+}

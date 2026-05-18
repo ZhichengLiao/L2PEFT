@@ -1,0 +1,54 @@
+{
+  "train": {
+    "data_source": "kod_code_light_rl_10k",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "Create a function that takes a list of integers as an input and returns the sum of the squares of these integers. For example, if the input list is `[1, 2, 2]`, the output should be `9` because \\(1^2 + 2^2 + 2^2 = 9\\).\n\nWrite a correct Python solution for the task. Return only one Python code block containing the implementation. Do not include tests or explanations."
+      }
+    ],
+    "ability": "code",
+    "reward_model": {
+      "style": "sandbox_fusion",
+      "ground_truth": "{\"assert_case\": [\"import sys as _kod_sys\\nimport types as _kod_types\\n\\n_kod_solution = _kod_types.ModuleType(\\\"solution\\\")\\n_kod_solution.__dict__.update(globals())\\n_kod_sys.modules[\\\"solution\\\"] = _kod_solution\\ndef test_sum_of_squares_empty():\\n    assert sum_of_squares([]) == 0\\n\\ndef test_sum_of_squares_single_element():\\n    assert sum_of_squares([3]) == 9\\n\\ndef test_sum_of_squares_positive_numbers():\\n    assert sum_of_squares([1, 2, 2]) == 9\\n\\ndef test_sum_of_squares_negative_numbers():\\n    assert sum_of_squares([-1, -2, -2]) == 9\\n\\ndef test_sum_of_squares_mixed_numbers():\\n    assert sum_of_squares([1, -2, 3]) == 14\\n\\ndef test_sum_of_squares_with_zero():\\n    assert sum_of_squares([0, 2, -2]) == 8\\n# Run converted pytest-style tests.\\ntest_sum_of_squares_empty()\\ntest_sum_of_squares_single_element()\\ntest_sum_of_squares_positive_numbers()\\ntest_sum_of_squares_negative_numbers()\\ntest_sum_of_squares_mixed_numbers()\\ntest_sum_of_squares_with_zero()\\n\"]}"
+    },
+    "extra_info": {
+      "split": "train",
+      "index": 1863,
+      "question_id": "Prefill_19163_I",
+      "subset": "Prefill",
+      "difficulty": "easy",
+      "function_name": "sum_of_squares",
+      "test_count": 6,
+      "question_chars": 218,
+      "test_chars": 527,
+      "solution_chars": 230
+    }
+  },
+  "test": {
+    "data_source": "kod_code_light_rl_10k",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "You are given an array of **n** integers `nums` and an integer `target`. Return _the number of distinct pairs `(i, j)` where `0 <= i < j < n` and `nums[i] * nums[j] == target`._\n\nWrite a correct Python solution for the task. Return only one Python code block containing the implementation. Do not include tests or explanations."
+      }
+    ],
+    "ability": "code",
+    "reward_model": {
+      "style": "sandbox_fusion",
+      "ground_truth": "{\"assert_case\": [\"import sys as _kod_sys\\nimport types as _kod_types\\n\\n_kod_solution = _kod_types.ModuleType(\\\"solution\\\")\\n_kod_solution.__dict__.update(globals())\\n_kod_sys.modules[\\\"solution\\\"] = _kod_solution\\ndef test_no_pairs():\\n    assert count_pairs([1, 2, 3, 4], 10) == 0\\n\\ndef test_single_pair():\\n    assert count_pairs([1, 2, 3, 4], 6) == 1  # (2, 3)\\n\\ndef test_multiple_pairs():\\n    assert count_pairs([1, 2, 2, 3, 4], 4) == 2  # (1, 4) and (2, 2)\\n\\ndef test_all_zero_target():\\n    assert count_pairs([0, 0, 0], 0) == 3  # (0, 1), (0, 2), (1, 2)\\n\\ndef test_negative_numbers():\\n    assert count_pairs([-1, 1, -2, 2], -2) == 2  # (-1, 2) and (1, -2)\\n\\ndef test_no_target():\\n    assert count_pairs([], 0) == 0\\n\\ndef test_large_numbers():\\n    assert count_pairs([100000, 100000], 10000000000) == 1  # (0, 1)\\n# Run converted pytest-style tests.\\ntest_no_pairs()\\ntest_single_pair()\\ntest_multiple_pairs()\\ntest_all_zero_target()\\ntest_negative_numbers()\\ntest_no_target()\\ntest_large_numbers()\\n\"]}"
+    },
+    "extra_info": {
+      "split": "test",
+      "index": 9497,
+      "question_id": "Leetcode_6630_I",
+      "subset": "Leetcode",
+      "difficulty": "hard",
+      "function_name": "count_pairs",
+      "test_count": 7,
+      "question_chars": 177,
+      "test_chars": 629,
+      "solution_chars": 596
+    }
+  }
+}

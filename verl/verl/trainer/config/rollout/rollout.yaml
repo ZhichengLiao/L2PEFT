@@ -16,6 +16,9 @@ top_k: -1
 # Top-p sampling parameter. Default 1.0.
 top_p: 1
 
+# Min-p sampling parameter. Default 0.0 disables min-p filtering.
+min_p: 0
+
 # Base RNG seed for rollout generation.
 seed: 0
 
@@ -62,7 +65,7 @@ expert_parallel_size: 1
 pipeline_model_parallel_size: 1
 
 # max number of tokens in a batch
-max_num_batched_tokens: 8192
+max_num_batched_tokens: 16384
 
 # max length for rollout
 max_model_len: null
@@ -134,6 +137,9 @@ val_kwargs:
 
   # Top-p sampling parameter. Default 1.0.
   top_p: 1.0
+
+  # Min-p sampling parameter. Default 0.0 disables min-p filtering.
+  min_p: 0
 
   # Sampling temperature for rollout.
   temperature: 0

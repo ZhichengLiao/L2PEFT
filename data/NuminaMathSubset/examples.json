@@ -1,0 +1,46 @@
+{
+  "train": {
+    "data_source": "numina_cn_k12",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "Wendy uploaded 22 pictures from her phone and 2 from her camera to facebook. If she sorted the pics into 4 different albums with the same amount of pics in each album, how many pictures were in each of the albums? Let's think step by step and output the final answer within \\boxed{}."
+      }
+    ],
+    "ability": "math",
+    "reward_model": {
+      "style": "rule",
+      "ground_truth": "6"
+    },
+    "extra_info": {
+      "split": "train",
+      "index": 634428,
+      "source": "orca_math",
+      "problem_chars": 213,
+      "solution_chars": 518,
+      "answer_kind": "integer"
+    }
+  },
+  "test": {
+    "data_source": "numina_cn_k12",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "Sara picked 61.0 peaches and had 37.0 pears at her fruit dish. She went to the orchard and picked some more peaches. She picked 85 peaches in total. How many more peaches did she pick at the orchard? Let's think step by step and output the final answer within \\boxed{}."
+      }
+    ],
+    "ability": "math",
+    "reward_model": {
+      "style": "rule",
+      "ground_truth": "24"
+    },
+    "extra_info": {
+      "split": "test",
+      "index": 350690,
+      "source": "orca_math",
+      "problem_chars": 199,
+      "solution_chars": 364,
+      "answer_kind": "integer"
+    }
+  }
+}

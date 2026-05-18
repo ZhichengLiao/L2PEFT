@@ -332,14 +332,18 @@ class AgentLoopWorkerBase:
         config = self.config.actor_rollout_ref.rollout
         sampling_params = dict(
             temperature=config.temperature,
+            top_k=config.top_k,
             top_p=config.top_p,
+            min_p=config.min_p,
             repetition_penalty=1.0,
             logprobs=config.calculate_log_probs,
         )
 
         # override sampling params for validation
         if batch.meta_info.get("validate", False):
+            sampling_params["top_k"] = config.val_kwargs.top_k
             sampling_params["top_p"] = config.val_kwargs.top_p
+            sampling_params["min_p"] = config.val_kwargs.min_p
             sampling_params["temperature"] = config.val_kwargs.temperature
 
         # by default, we assume it's a single turn agent

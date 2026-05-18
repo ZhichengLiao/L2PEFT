@@ -1,0 +1,42 @@
+{
+  "train": {
+    "data_source": "nvidia/Nemotron-Cascade-RL-Math",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "Let $f$ be a polynomial. We say that a complex number $p$ is a $\\textit{double attractor}$ if there exists a\npolynomial $h(x)$ so that $f(x)-f(p) = h(x)(x-p)^2$ for all $x \\in \\mathbb{R}$. Now, consider the polynomial\n$$f(x) = 12x^5 - 15x^4 - 40x^3 + 540x^2 - 2160x + 1,$$\nand suppose that it's double attractors are $a_1, a_2,..., a_n$. If the sum $\\sum_{i=1}^{n} |a_i|$ can be written as\n$\\sqrt{a} + \\sqrt{b}$, where $a, b$ are positive integers, find $a + b$. Let's think step by step and output the final answer within \\boxed{}."
+      }
+    ],
+    "ability": "math",
+    "reward_model": {
+      "style": "rule",
+      "ground_truth": "49"
+    },
+    "extra_info": {
+      "split": "train",
+      "index": 13778,
+      "source": "numinamath_1.5",
+      "problem_chars": 462
+    }
+  },
+  "test": {
+    "data_source": "nvidia/Nemotron-Cascade-RL-Math",
+    "prompt": [
+      {
+        "role": "user",
+        "content": "## Task Condition\n\nCalculate the areas of figures bounded by lines given in polar coordinates.\n\n$$\nr=2 \\sin 4 \\phi\n$$ Let's think step by step and output the final answer within \\boxed{}."
+      }
+    ],
+    "ability": "math",
+    "reward_model": {
+      "style": "rule",
+      "ground_truth": "2\\pi"
+    },
+    "extra_info": {
+      "split": "test",
+      "index": 6852,
+      "source": "numinamath_1.5",
+      "problem_chars": 117
+    }
+  }
+}

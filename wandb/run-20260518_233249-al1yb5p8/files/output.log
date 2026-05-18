@@ -1,0 +1,64 @@
+Checkpoint tracker file does not exist: /nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/checkpoints/grpo_gemma3_1B_it_nemotron_cascade_math_FFT_d42_r42/latest_checkpointed_iteration.txt
+Training from scratch
+test_gen_batch meta info: {'eos_token_id': 1, 'pad_token_id': 0, 'recompute_log_prob': False, 'do_sample': True, 'validate': True, 'global_steps': 0}
+validation generation end
+[prompt] user
+## Task Condition
+
+Calculate the areas of figures bounded by lines given in polar coordinates.
+
+$$
+r=2 \sin 4 \phi
+$$ Let's think step by step and output the final answer within \boxed{}.
+model
+
+[response] Let the given equation be
+$$r = 2 \sin 4 \phi$$
+We want to find the area of the region bounded by the lines $y = 0$ and $y = x$.
+
+We can express the area as
+$$A = \int_{0}^{2\pi} \int_{0}^{2\pi} \frac{r}{2} r \, d\phi \, d\theta = \int_{0}^{2\pi} \int_{0}^{2\pi} \frac{r^2}{2} \, d\phi \, d\theta$$
+$$A = \int_{0}^{2\pi} \frac{1}{2} \int_{0}^{2\pi} r^2 \, d\phi \, d\theta = \frac{1}{2} \int_{0}^{2\pi} \left[ \frac{r^3}{3} \right]_{0}^{2\pi} \, d\theta = \frac{1}{2} \int_{0}^{2\pi} \frac{(2\pi)^3}{3} \, d\theta = \frac{1}{2} \cdot \frac{8\pi^3}{3} \int_{0}^{2\pi} d\theta = \frac{4\pi^3}{3} \int_{0}^{2\pi} d\theta$$
+$$A = \frac{4\pi^3}{3} [ \theta ]_{0}^{2\pi} = \frac{4\pi^3}{3} (2\pi - 0) = \frac{4\pi^3}{3} (2\pi) = \frac{8\pi^4}{3}$$
+Thus, the area of the region is $\frac{8\pi^4}{3}$.
+
+The area is
+$$A = \int_{0}^{2\pi} \int_{0}^{2\pi} \frac{r^2}{2} \, d\phi \, d\theta = \int_{0}^{2\pi} \frac{1}{2} \int_{0}^{2\pi} r^2 \, d\phi \, d\theta = \int_{0}^{2\pi} \frac{1}{2} \left[ \frac{r^3}{3} \right]_{0}^{2\pi} d\theta = \int_{0}^{2\pi} \frac{1}{2} \left( \frac{(2\pi)^3}{3} - 0 \right) d\theta = \int_{0}^{2\pi} \frac{8\pi^3}{6} d\theta = \int_{0}^{2\pi} \frac{4\pi^3}{3} d\theta = \frac{4\pi^3}{3} \int_{0}^{2\pi} d\theta = \frac{4\pi^3}{3} (2\pi) = \frac{8\pi^4}{3}$$
+Therefore, the area of the region bounded by the lines $y=0$ and $y=x$ is $\frac{8\pi^4}{3} \approx 7.556 \times 10^4$.
+
+Final Answer: The final answer is $\boxed{\frac{8\pi^4}{3}}$
+[ground_truth] 2\pi
+[score] 0.0
+[format_correct] False
+[extracted_answer] \frac{8\pi^4}{3}
+('Initial validation metrics: '
+ "{'val-core/nvidia/Nemotron-Cascade-RL-Math/reward/mean@1': "
+ "0.06785714285714285, 'val-aux/nvidia/Nemotron-Cascade-RL-Math/score/mean@1': "
+ '0.06785714285714285, '
+ "'val-aux/nvidia/Nemotron-Cascade-RL-Math/format_correct/mean@1': "
+ '0.06785714285714285}')
+step:0 - val-core/nvidia/Nemotron-Cascade-RL-Math/reward/mean@1:0.06785714285714285 - val-aux/nvidia/Nemotron-Cascade-RL-Math/score/mean@1:0.06785714285714285 - val-aux/nvidia/Nemotron-Cascade-RL-Math/format_correct/mean@1:0.06785714285714285
+Training Progress:   0%|          | 0/214 [00:00<?, ?it/s]Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): [36mray::WorkerDict.actor_rollout_update_actor()[39m (pid=3407044, ip=192.168.62.148, actor_id=a3b5fd6955a831051fa9132c01000000, repr=<verl.single_controller.ray.base.WorkerDict object at 0x1430a08c9e40>)
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/verl/verl/single_controller/ray/base.py", line 700, in func
+    return getattr(self.worker_dict[key], name)(*args, **kwargs)
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/verl/verl/single_controller/base/decorator.py", line 442, in inner
+    return func(*args, **kwargs)
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/verl/verl/utils/transferqueue_utils.py", line 199, in dummy_inner
+    return func(*args, **kwargs)
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/verl/verl/utils/profiler/profile.py", line 256, in wrapper
+    return func(self_instance, *args, **kwargs_inner)
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/verl/verl/workers/fsdp_workers.py", line 896, in update_actor
+    metrics = self.actor.update_policy(data=data)
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/verl/verl/utils/profiler/performance.py", line 105, in f
+    return self.log(decorated_function, *args, **kwargs)
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/verl/verl/utils/profiler/performance.py", line 118, in log
+    output = func(*args, **kwargs)
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/verl/verl/workers/actor/dp_actor.py", line 520, in update_policy
+    loss.backward()
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/conda_envs/lzc-L2PEFT/lib/python3.10/site-packages/torch/_tensor.py", line 647, in backward
+    torch.autograd.backward(
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/conda_envs/lzc-L2PEFT/lib/python3.10/site-packages/torch/autograd/__init__.py", line 354, in backward
+    _engine_run_backward(
+  File "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/conda_envs/lzc-L2PEFT/lib/python3.10/site-packages/torch/autograd/graph.py", line 829, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 8.30 GiB. GPU 0 has a total capacity of 39.49 GiB of which 7.27 GiB is free. Including non-PyTorch memory, this process has 32.21 GiB memory in use. Of the allocated memory 36.22 GiB is allocated by PyTorch, with 100.48 MiB allocated in private pools (e.g., CUDA Graphs), and 132.56 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

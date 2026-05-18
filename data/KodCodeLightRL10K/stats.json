@@ -1,0 +1,74 @@
+{
+  "dataset": "KodCode/kod_code-light-rl-10_k",
+  "data_source": "kod_code_light_rl_10k",
+  "raw_arrow_path": "/nfs-stor/zhengqing.gao/yuhao.wu/lzc/hf_cache/datasets/KodCode___kod_code-light-rl-10_k/default/0.0.0/dcf78a8bbba9a613b596ce993c4921a38687dfcc/kod_code-light-rl-10_k-train.arrow",
+  "seed": 42,
+  "test_size": 300,
+  "raw_rows": 10000,
+  "kept_rows": 9651,
+  "train_rows": 9351,
+  "test_rows": 300,
+  "skipped_rows": 349,
+  "skip_reason_counts": {
+    "test_function_with_args": 138,
+    "heavy_import": 200,
+    "decorated_test_function": 11
+  },
+  "subset_counts_raw": {
+    "Filter": 2674,
+    "Leetcode": 983,
+    "Algorithm": 1057,
+    "Taco": 941,
+    "Data_Structure": 727,
+    "Prefill": 1466,
+    "Code_Contests": 169,
+    "Apps": 587,
+    "Codeforces": 171,
+    "Evol": 413,
+    "Package": 429,
+    "Docs": 383
+  },
+  "subset_counts_kept": {
+    "Filter": 2588,
+    "Leetcode": 983,
+    "Algorithm": 1036,
+    "Taco": 938,
+    "Data_Structure": 724,
+    "Prefill": 1450,
+    "Code_Contests": 169,
+    "Apps": 587,
+    "Codeforces": 171,
+    "Evol": 411,
+    "Package": 345,
+    "Docs": 249
+  },
+  "difficulty_counts_raw": {
+    "easy": 6601,
+    "hard": 1477,
+    "medium": 1922
+  },
+  "difficulty_counts_kept": {
+    "easy": 6425,
+    "hard": 1395,
+    "medium": 1831
+  },
+  "test_count_distribution_kept": {
+    "1": 574,
+    "2": 171,
+    "3": 270,
+    "4": 702,
+    "5": 2297,
+    "6": 2289,
+    "7": 1709,
+    "8": 969,
+    "9": 406,
+    "10": 205,
+    "11": 32,
+    "12": 16,
+    "13": 7,
+    "14": 1,
+    "15": 1,
+    "16": 1,
+    "18": 1
+  }
+}

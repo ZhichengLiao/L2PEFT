@@ -1,0 +1,82 @@
+Checkpoint tracker file does not exist: /nfs-stor/zhengqing.gao/yuhao.wu/lzc/L2PEFT/checkpoints/grpo_qwen2.5_1.5B_it_nemotron_cascade_math_FFT_d42_r42/latest_checkpointed_iteration.txt
+Training from scratch
+test_gen_batch meta info: {'eos_token_id': 151645, 'pad_token_id': 151643, 'recompute_log_prob': False, 'do_sample': True, 'validate': True, 'global_steps': 0}
+validation generation end
+[prompt] system
+You are Qwen, created by Alibaba Cloud. You are a helpful assistant.
+user
+## Task Condition
+
+Calculate the areas of figures bounded by lines given in polar coordinates.
+
+$$
+r=2 \sin 4 \phi
+$$ Let's think step by step and output the final answer within \boxed{}.
+assistant
+
+[response] To calculate the area of the figure bounded by the curve given in polar coordinates \( r = 2 \sin 4\phi \), we use the formula for the area in polar coordinates:
+
+\[
+A = \frac{1}{2} \int_{\alpha}^{\beta} r^2 \, d\phi
+\]
+
+Here, \( r = 2 \sin 4\phi \). First, we need to determine the limits of integration. The function \( r = 2 \sin 4\phi \) completes one full cycle from \( \phi = 0 \) to \( \phi = \frac{\pi}{2} \). This is because \( \sin 4\phi \) has a period of \( \frac{\pi}{2} \).
+
+So, we integrate from \( \phi = 0 \) to \( \phi = \frac{\pi}{2} \):
+
+\[
+A = \frac{1}{2} \int_{0}^{\frac{\pi}{2}} (2 \sin 4\phi)^2 \, d\phi = \frac{1}{2} \int_{0}^{\frac{\pi}{2}} 4 \sin^2 4\phi \, d\phi = 2 \int_{0}^{\frac{\pi}{2}} \sin^2 4\phi \, d\phi
+\]
+
+To simplify the integral, we use the identity \( \sin^2 x = \frac{1 - \cos 2x}{2} \):
+
+\[
+\sin^2 4\phi = \frac{1 - \cos 8\phi}{2}
+\]
+
+So the integral becomes:
+
+\[
+A = 2 \int_{0}^{\frac{\pi}{2}} \frac{1 - \cos 8\phi}{2} \, d\phi = \int_{0}^{\frac{\pi}{2}} (1 - \cos 8\phi) \, d\phi
+\]
+
+We can now split this into two separate integrals:
+
+\[
+A = \int_{0}^{\frac{\pi}{2}} 1 \, d\phi - \int_{0}^{\frac{\pi}{2}} \cos 8\phi \, d\phi
+\]
+
+The first integral is straightforward:
+
+\[
+\int_{0}^{\frac{\pi}{2}} 1 \, d\phi = \left[ \phi \right]_{0}^{\frac{\pi}{2}} = \frac{\pi}{2}
+\]
+
+The second integral can be solved by using the substitution \( u = 8\phi \), so \( du = 8 \, d\phi \) and \( d\phi = \frac{du}{8} \):
+
+\[
+\int_{0}^{\frac{\pi}{2}} \cos 8\phi \, d\phi = \frac{1}{8} \int_{0}^{4\pi} \cos u \, du = \frac{1}{8} \left[ \sin u \right]_{0}^{4\pi} = \frac{1}{8} ( \sin 4\pi - \sin 0 ) = \frac{1}{8} (0 - 0) = 0
+\]
+
+So the area is:
+
+\[
+A = \frac{\pi}{2} - 0 = \frac{\pi}{2}
+\]
+
+Therefore, the area of the figure bounded by the curve \( r = 2 \sin 4\phi \) is \(\boxed{\frac{\pi}{2}}\).
+[ground_truth] 2\pi
+[score] 0.0
+[format_correct] False
+[extracted_answer] \frac{\pi}{2}
+WARNING:2026-05-19 00:04:15,273:WARNING: Error in configuration: macro '\frac' failed its substitution!
+('Initial validation metrics: '
+ "{'val-core/nvidia/Nemotron-Cascade-RL-Math/reward/mean@1': "
+ "0.09642857142857143, 'val-aux/nvidia/Nemotron-Cascade-RL-Math/score/mean@1': "
+ '0.09642857142857143, '
+ "'val-aux/nvidia/Nemotron-Cascade-RL-Math/format_correct/mean@1': "
+ '0.14285714285714285}')
+step:0 - val-core/nvidia/Nemotron-Cascade-RL-Math/reward/mean@1:0.09642857142857143 - val-aux/nvidia/Nemotron-Cascade-RL-Math/score/mean@1:0.09642857142857143 - val-aux/nvidia/Nemotron-Cascade-RL-Math/format_correct/mean@1:0.14285714285714285
+Training Progress:   1%|          | 2/214 [10:35<18:45:16, 318.47s/it]
+step:1 - actor/entropy:0.08307905495166779 - actor/pg_clipfrac:0.0008342323407219965 - actor/ppo_kl:-4.5398568327303934e-05 - actor/pg_clipfrac_lower:0.0 - actor/kl_loss:9.85974061928907e-06 - actor/kl_coef:0.0010000000000000005 - actor/pg_loss:3.692307473102119e-07 - actor/grad_norm:0.18856443092226982 - perf/mfu/actor:0.17002534873272263 - perf/max_memory_allocated_gb:22.42786455154419 - perf/max_memory_reserved_gb:24.962890625 - perf/cpu_memory_used_gb:64.30600547790527 - actor/lr:1e-06 - training/global_step:1 - training/epoch:0 - critic/score/mean:0.0673828125 - critic/score/max:1.0 - critic/score/min:0.0 - critic/rewards/mean:0.0673828125 - critic/rewards/max:1.0 - critic/rewards/min:0.0 - critic/advantages/mean:-0.049721404910087585 - critic/advantages/max:2.4748666286468506 - critic/advantages/min:-1.6201815605163574 - critic/returns/mean:-0.049721404910087585 - critic/returns/max:2.4748666286468506 - critic/returns/min:-1.6201815605163574 - response_length/mean:1197.451171875 - response_length/max:8192.0 - response_length/min:147.0 - response_length/clip_ratio:0.0615234375 - response_length_non_aborted/mean:1197.451171875 - response_length_non_aborted/max:8192.0 - response_length_non_aborted/min:147.0 - response_length_non_aborted/clip_ratio:0.0615234375 - response/aborted_ratio:0.0 - prompt_length/mean:134.96875 - prompt_length/max:308.0 - prompt_length/min:63.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:0.0002673403359949589 - timing_s/generate_sequences:94.614501953125 - timing_s/generation_timing/max:125.34236145019531 - timing_s/generation_timing/min:71.4990005493164 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:129.28787931380793 - timing_s/reward:57.18018780602142 - timing_s/old_log_prob:17.59844506205991 - timing_s/ref:22.980138713959605 - timing_s/adv:0.06860618619248271 - timing_s/update_actor:85.51564443390816 - timing_s/step:312.9241151297465 - timing_s/stop_profile:6.651412695646286e-05 - timing_per_token_ms/gen:0.10543869980493066 - timing_per_token_ms/ref:0.016842694517259338 - timing_per_token_ms/adv:5.0283118410084675e-05 - timing_per_token_ms/update_actor:0.06267646568956284 - perf/total_num_tokens:1364398 - perf/time_per_step:312.9241151297465 - perf/throughput:1090.0390334524755
+step:2 - actor/entropy:0.07293660193681717 - actor/pg_clipfrac:0.0009272881903541474 - actor/ppo_kl:-4.7600425758215215e-05 - actor/pg_clipfrac_lower:1.1920928955078125e-07 - actor/kl_loss:1.0047803915530507e-05 - actor/kl_coef:0.0010000000000000005 - actor/pg_loss:9.389823389938101e-07 - actor/grad_norm:0.17835807614028454 - perf/mfu/actor:0.1824618243552138 - perf/max_memory_allocated_gb:22.499022006988525 - perf/max_memory_reserved_gb:25.017578125 - perf/cpu_memory_used_gb:77.61977005004883 - actor/lr:1e-06 - training/global_step:2 - training/epoch:0 - critic/score/mean:0.1005859375 - critic/score/max:1.0 - critic/score/min:0.0 - critic/rewards/mean:0.1005859375 - critic/rewards/max:1.0 - critic/rewards/min:0.0 - critic/advantages/mean:-0.04985770955681801 - critic/advantages/max:2.4748666286468506 - critic/advantages/min:-2.4748666286468506 - critic/returns/mean:-0.04985770955681801 - critic/returns/max:2.4748666286468506 - critic/returns/min:-2.4748666286468506 - response_length/mean:1295.955078125 - response_length/max:8192.0 - response_length/min:132.0 - response_length/clip_ratio:0.0751953125 - response_length_non_aborted/mean:1295.955078125 - response_length_non_aborted/max:8192.0 - response_length_non_aborted/min:132.0 - response_length_non_aborted/clip_ratio:0.0751953125 - response/aborted_ratio:0.0 - prompt_length/mean:146.1953125 - prompt_length/max:369.0 - prompt_length/min:76.0 - prompt_length/clip_ratio:0.0 - timing_s/start_profile:6.732577458024025e-05 - timing_s/generate_sequences:102.2939224243164 - timing_s/generation_timing/max:134.22598266601562 - timing_s/generation_timing/min:76.60382843017578 - timing_s/generation_timing/topk_ratio:0.25 - timing_s/gen:138.25591413816437 - timing_s/reward:57.626602361910045 - timing_s/old_log_prob:15.962241576053202 - timing_s/ref:23.565097550861537 - timing_s/adv:0.06205923669040203 - timing_s/update_actor:86.0398068758659 - timing_s/step:321.899237559177 - timing_s/stop_profile:6.133504211902618e-05 - timing_per_token_ms/gen:0.10418226945481235 - timing_per_token_ms/ref:0.015957275140382497 - timing_per_token_ms/adv:4.202385806948041e-05 - timing_per_token_ms/update_actor:0.05826247348988253 - perf/total_num_tokens:1476762 - perf/time_per_step:321.899237559177 - perf/throughput:1146.9132477585604
