@@ -3,8 +3,11 @@
 **/.claude
 **/.codex
 
+wandb/
+
 # 数据文件
 data/**/*.parquet
+data/__pycache__/
 
 # Hydra 输出和日志
 outputs/
@@ -13,6 +16,7 @@ outputs/
 __pycache__/
 *.pyc
 *.pyo
+rewards/__pycache__
 
 # IDE
 .vscode/
